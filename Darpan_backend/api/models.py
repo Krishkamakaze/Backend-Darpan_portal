@@ -4,7 +4,7 @@ from django.core.validators import FileExtensionValidator, MaxValueValidator
 class Student(models.Model):
     studentName = models.CharField(max_length=50)
     fatherName = models.CharField(max_length=50)
-    rollnumber = models.IntegerField(primary_key=True)
+    rollnumber = models.IntegerField()
     programme = models.CharField(max_length=50)
     department = models.CharField(max_length=50)
     branch = models.CharField(max_length=50)

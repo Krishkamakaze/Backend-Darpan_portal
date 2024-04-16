@@ -8,12 +8,12 @@ from rest_framework.response import Response
 # Create your views here.
 
 @api_view(['GET','POST','PUT','PATCH','DELETE']) 
-def student_api(request):
+def student_api(request, pk=None):
     if request.method == 'GET':
-        id = request.data.get('rollnumber')
+        id = pk
         if id is not None :
             stu = Student.objects.get(id=id)
-            serializer = StudentSerializer(stu)
+            serializer = StudentSerializer(stu, many = True)
             return Response(serializer.data)
         stu = Student.objects.all()
         serializer = StudentSerializer(stu, many = True)
@@ -25,7 +25,7 @@ def student_api(request):
             return Response({'msg': 'data created'})
         return Response(serializer.errors)
     if request.method == "PUT":
-        id = request.data.get('rollnumber')
+        id = pk
         stu = Student.objects.get(pk = id)
         serializer = StudentSerializer(stu , data = request.data , partial=True)
         if serializer.is_valid():
