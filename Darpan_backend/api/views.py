@@ -33,6 +33,15 @@ def student_api(request, pk=None):
             return Response({'msg' : 'data changed'})
         return Response(serializer.errors)
     
+    if request.method == "PATCH":
+        id = pk
+        stu = Student.objects.get(pk = id)
+        serializer = StudentSerializer(stu , data = request.data , partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'msg' : 'Partial data changed'})
+        return Response(serializer.errors)
+    
 
 
     
