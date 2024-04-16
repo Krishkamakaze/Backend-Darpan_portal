@@ -14,4 +14,5 @@ class Student(models.Model):
     aadharnumber = models.IntegerField()
     marksheetcopy = models.FileField(validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx'])])
     aadharcopy = models.FileField(validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx'])])
-    
+    Status = models.CharField(max_length = 15)
+    created_at = models.DateTimeField(auto_now_add=True)
