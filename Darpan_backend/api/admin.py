@@ -5,4 +5,4 @@ from .models import Student
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ['rollnumber' , 'studentName' , 'branch' , 'programme']
+    list_display = ['rollnumber' , 'studentName' , 'branch' , 'Certificate']
